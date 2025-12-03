@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DJ Mixer – 5 Tracks</title>
+<style>
+    body {
+        background: #111;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+    .deck {
+        background: #222;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px auto;
+        width: 85%;
+        box-shadow: 0 0 20px #000;
+    }
+    input[type=range] {
+        width: 90%;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        background: #444;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+    }
+    button:hover {
+        background: #666;
+    }
+</style>
+</head>
+<body>
+
+<h1>🎧 DJ Mixer – 5 Track Controller</h1>
+
+<!-- Template for each deck -->
+<!-- Copy logic repeated for 5 tracks -->
+
+<!-- DECK 1 -->
+<div class="deck">
+    <h2>Track: girl.mp3</h2>
+    <audio id="t1" src="/girl.mp3"></audio>
+
+    <button onclick="play(1)">Play</button>
+    <button onclick="pause(1)">Pause</button>
+
+    <p>Volume</p>
+    <input type="range" min="0" max="1" step="0.01" value="1"
+           onchange="vol(1,this.value)">
+
+    <p>Seek / Cue</p>
+    <input type="range" id="seek1" min="0" max="100" value="0"
+           oninput="seek(1,this.value)">
+</div>
+
+<!-- DECK 2 -->
+<div class="deck">
+    <h2>Track: ron.mp3</h2>
+    <audio id="t2" src="/ron.mp3"></audio>
+
+    <button onclick="play(2)">Play</button>
+    <button onclick="pause(2)">Pause</button>
+
+    <p>Volume</p>
+    <input type="range" min="0" max="1" step="0.01" value="1"
+           onchange="vol(2,this.value)">
+
+    <p>Seek / Cue</p>
+    <input type="range" id="seek2" min="0" max="100" value="0"
+           oninput="seek(2,this.value)">
+</div>
+
+<!-- DECK 3 -->
+<div class="deck">
+    <h2>Track: ronl.mp3</h2>
+    <audio id="t3" src="/ronl.mp3"></audio>
+
+    <button onclick="play(3)">Play</button>
+    <button onclick="pause(3)">Pause</button>
+
+    <p>Volume</p>
+    <input type="range" min="0" max="1" step="0.01" value="1"
+           onchange="vol(3,this.value)">
+
+    <p>Seek / Cue</p>
+    <input type="range" id="seek3" min="0" max="100" value="0"
+           oninput="seek(3,this.value)">
+</div>
+
+<!-- DECK 4 -->
+<div class="deck">
+    <h2>Track: ronlu.mp3</h2>
+    <audio id="t4" src="/ronlu.mp3"></audio>
+
+    <button onclick="play(4)">Play</button>
+    <button onclick="pause(4)">Pause</button>
+
+    <p>Volume</p>
+    <input type="range" min="0" max="1" step="0.01" value="1"
+           onchange="vol(4,this.value)">
+
+    <p>Seek / Cue</p>
+    <input type="range" id="seek4" min="0" max="100" value="0"
+           oninput="seek(4,this.value)">
+</div>
+
+<!-- DECK 5 -->
+<div class="deck">
+    <h2>Track: ronlo.mp3</h2>
+    <audio id="t5" src="/ronlo.mp3"></audio>
+
+    <button onclick="play(5)">Play</button>
+    <button onclick="pause(5)">Pause</button>
+
+    <p>Volume</p>
+    <input type="range" min="0" max="1" step="0.01" value="1"
+           onchange="vol(5,this.value)">
+
+    <p>Seek / Cue</p>
+    <input type="range" id="seek5" min="0" max="100" value="0"
+           oninput="seek(5,this.value)">
+</div>
+
+
+<script>
+// Generic DJ functions for all tracks
+function play(n) {
+    document.getElementById("t" + n).play();
+}
+function pause(n) {
+    document.getElementById("t" + n).pause();
+}
+function vol(n, v) {
+    document.getElementById("t" + n).volume = v;
+}
+function seek(n, v) {
+    let track = document.getElementById("t" + n);
+    if (track.duration > 0) {
+        track.currentTime = (track.duration * v) / 100;
+    }
+}
+</script>
+
+</body>
+</html>
